@@ -4,6 +4,7 @@
 
   if (!isChrome) {
     document.getElementById("iframeAudio").remove();
+    document.getElementById("playAudio").remove();
   } else {
     document.getElementById("playAudio").remove();
   }

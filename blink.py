@@ -5,6 +5,7 @@ import math
 import time
 import webbrowser
 import os
+# import playsound from playsound
 BLINK_RATIO_THRESHOLD = 5.7
 
 #-----Step 5: Getting to know blink ratio
@@ -98,10 +99,11 @@ while True:
 
     duration = (time.time() - start)
     print(faceCount, duration, blink)
-    if blink >= 3:
+    if blink >= 2:
         print('Sleeping!!!!')
+        print('\a')
         blink = 0
-        webbrowser.open('file://{}/index.html'.format(os.path.abspath(os.getcwd())))
+        # webbrowser.open('file://{}/index.html'.format(os.path.abspath(os.getcwd())))
     # time.sleep(1)
     cv2.imshow('BlinkDetector', frame)
     key = cv2.waitKey(1)

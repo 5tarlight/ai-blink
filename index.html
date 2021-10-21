@@ -8,10 +8,27 @@
   </head>
   <body>
     <h1>DO NOT SLEEP!!!!!!!</h1>
-    <iframe src="bell.mp3" allow="autoplay" id="iframeAudio"></iframe>
+    <iframe src="./bell.mp3" allow="autoplay" id="iframeAudio"></iframe>
     <audio autoplay loop id="playAudio">
-      <source src="bell.mp3" />
+      <source src="./bell.mp3" />
     </audio>
-    <!-- <script src="index.js"></script> -->
+    <script>
+      (() => {
+        const isChrome =
+          /Chrome/.test(navigator.userAgent) &&
+          /Google Inc/.test(navigator.vendor);
+
+        if (!isChrome) {
+          console.log("Not Chrome");
+          document.getElementById("iframeAudio").remove();
+          document.getElementById("playAudio").remove();
+        } else {
+          console.log("Chrome");
+          // document.getElementById("playAudio").remove();
+          // document.getElementById("iframeAudio").play();
+          document.getElementById("playAudio").play();
+        }
+      })();
+    </script>
   </body>
 </html>
