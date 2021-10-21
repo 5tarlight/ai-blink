@@ -3,6 +3,7 @@ import cv2
 import dlib
 import math
 import time
+import webbrowser
 BLINK_RATIO_THRESHOLD = 5.7
 
 #-----Step 5: Getting to know blink ratio
@@ -97,6 +98,8 @@ while True:
     print(duration, blink)
     if blink >= 3:
         print('Sleeping!!!!')
+        blink = 0
+        webbrowser.open('http://google.com')
     # time.sleep(1)
     cv2.imshow('BlinkDetector', frame)
     key = cv2.waitKey(1)
