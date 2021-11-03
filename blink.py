@@ -33,7 +33,11 @@ def get_blink_ratio(eye_points, facial_landmarks):
     horizontal_length = euclidean_distance(corner_left,corner_right)
     vertical_length = euclidean_distance(center_top,center_bottom)
 
-    ratio = horizontal_length / vertical_length
+    ratio = 0
+    if horizontal_length == 0:
+        ratio = 1
+    else:
+        ratio = horizontal_length / vertical_length
 
     return ratio
 
@@ -101,6 +105,8 @@ while True:
     print(faceCount, duration, blink)
     if blink >= 2:
         print('Sleeping!!!!')
+        cv2.putText(frame,"SLEEPING",(10,120), cv2.FONT_HERSHEY_SIMPLEX,
+            2,(255,255,255),2,cv2.LINE_AA)
         print('\a')
         blink = 0
         # webbrowser.open('file://{}/index.html'.format(os.path.abspath(os.getcwd())))
